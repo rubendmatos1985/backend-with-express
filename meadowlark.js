@@ -1,14 +1,9 @@
 const express = require("express");
 const app = express();
-
-const fortunes = [
-  "Conquer your fears or the will conquer you",
-  "Rivers need springs",
-  "Do not fear what you don't know",
-  "You will have a pleasant sorprise",
-  "Whenever possible, keep it simple."    
-]
-
+const randomCookieGenerator = require('./lib/fortune.js')
+  .getFortune;
+const cookies = require('./lib/cookies')
+  .fortuneCookies;
 
 // set up handlebars view engine
 const handlebars = require("express3-handlebars").create({
@@ -24,13 +19,14 @@ app.set("port", process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public'));
 
 // ROUTES
+
 app.get("/", (req, res) => {
+  console.log(res);
   res.render("home");
-});
+}); 
 
 app.get('/about', (req, res)=>{
-  const num = Math.floor(Math.random() * fortunes.length)  
-  res.render('about', { fortune: fortunes[num] });
+  res.render('about', { fortune: randomCookieGenerator(cookies) });
 })
 
 // custom 404 page
@@ -46,7 +42,7 @@ app.use((err, req, res, next) => {
   res.render("500");
 })
 
-app.listen(app.get("port"), (e) => {
+app.listen(app.get("port"), () => {
  
   console.log(
     `Express started on http://localhost:${app.get("port")}; 
