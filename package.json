@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "meadowlark.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -16,6 +13,18 @@
     "ramda": "^0.26.1"
   },
   "devDependencies": {
-    "mocha": "^6.0.0"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "grunt": "^1.0.3",
+    "grunt-cafe-mocha": "^0.1.13",
+    "grunt-contrib-jshint": "^2.0.0",
+    "grunt-exec": "^3.0.0",
+    "linkchecker": "^1.1.0",
+    "mocha": "^6.0.0",
+    "zombie": "^6.1.4"
   }
 }
